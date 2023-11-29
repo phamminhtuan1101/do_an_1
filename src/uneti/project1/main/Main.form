@@ -27,17 +27,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="labelBorder1" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainLabel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="labelBorder1" alignment="0" pref="601" max="32767" attributes="0"/>
+          <Component id="mainLabel" alignment="0" pref="601" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="uneti.project1.swing.LabelBorder" name="labelBorder1">
+    <Container class="uneti.project1.swing.LabelBorder" name="mainLabel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e0" green="97" red="12" type="rgb"/>
@@ -63,7 +63,7 @@
               <Component id="menu" alignment="0" pref="601" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mainPanel" max="32767" attributes="0"/>
+                  <Component id="mainPanel" pref="575" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

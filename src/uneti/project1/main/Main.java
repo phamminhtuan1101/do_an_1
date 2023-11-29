@@ -4,11 +4,12 @@ package uneti.project1.main;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import uneti.project1.event.EventMenuSelected;
+import uneti.project1.form.Form_DK;
 import uneti.project1.form.Form_DT;
 import uneti.project1.form.Form_Kho;
 import uneti.project1.form.Form_KH;
-import uneti.project1.form.Form_Login;
 import uneti.project1.form.Form_NV;
 import uneti.project1.form.Form_PN;
 import uneti.project1.form.Form_PX;
@@ -18,7 +19,6 @@ public class Main extends javax.swing.JFrame {
     Login lg = new Login();
     int xy;
     int xx;
-   private static Main app;
 //Selected Index: 1
 //Selected Index: 2
 //Selected Index: 3
@@ -48,17 +48,26 @@ public class Main extends javax.swing.JFrame {
                }else if(index == 5){
                    setForm(new Form_Kho());
                }else if(index == 10){
+                  int op = JOptionPane.showConfirmDialog(Main.this, "Bạn có muốn đăng xuất không ?", "Xác nhận",JOptionPane.YES_NO_OPTION);
+                   if( op!=JOptionPane.YES_OPTION){
+                   return;
+               }{
                    Main.this.dispose();
                    lg.setVisible(true);
+               }
                }else if(index == 9){
                    
                }else if(index == 8){
-                   
+                   setForm(new Form_DK());
                }
             }            
         });
     }
 
+    private void setMain(JComponent com){
+        mainLabel.removeAll();
+        mainLabel.add(com);
+    }
     private void setForm(JComponent com){
         mainPanel.removeAll();
         mainPanel.add(com);
@@ -71,7 +80,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelBorder1 = new uneti.project1.swing.LabelBorder();
+        mainLabel = new uneti.project1.swing.LabelBorder();
         menu = new uneti.project1.components.Menu();
         mainPanel = new javax.swing.JPanel();
 
@@ -79,29 +88,29 @@ public class Main extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1000, 600));
 
-        labelBorder1.setBackground(new java.awt.Color(18, 151, 224));
-        labelBorder1.setPreferredSize(new java.awt.Dimension(1100, 600));
+        mainLabel.setBackground(new java.awt.Color(18, 151, 224));
+        mainLabel.setPreferredSize(new java.awt.Dimension(1100, 600));
 
         mainPanel.setOpaque(false);
         mainPanel.setPreferredSize(new java.awt.Dimension(876, 521));
         mainPanel.setLayout(new javax.swing.BoxLayout(mainPanel, javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout labelBorder1Layout = new javax.swing.GroupLayout(labelBorder1);
-        labelBorder1.setLayout(labelBorder1Layout);
-        labelBorder1Layout.setHorizontalGroup(
-            labelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(labelBorder1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainLabelLayout = new javax.swing.GroupLayout(mainLabel);
+        mainLabel.setLayout(mainLabelLayout);
+        mainLabelLayout.setHorizontalGroup(
+            mainLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainLabelLayout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        labelBorder1Layout.setVerticalGroup(
-            labelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainLabelLayout.setVerticalGroup(
+            mainLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 601, Short.MAX_VALUE)
-            .addGroup(labelBorder1Layout.createSequentialGroup()
+            .addGroup(mainLabelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -109,11 +118,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
 
         pack();
@@ -162,7 +171,7 @@ public class Main extends javax.swing.JFrame {
     
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private uneti.project1.swing.LabelBorder labelBorder1;
+    private uneti.project1.swing.LabelBorder mainLabel;
     private javax.swing.JPanel mainPanel;
     private uneti.project1.components.Menu menu;
     // End of variables declaration//GEN-END:variables
