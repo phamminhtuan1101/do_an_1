@@ -54,6 +54,8 @@ public class Form_PN extends javax.swing.JPanel {
         } catch (Exception e) {
         }
     }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -407,7 +409,7 @@ public class Form_PN extends javax.swing.JPanel {
                 }
                 if(sb.length() > 0){
                     JOptionPane.showMessageDialog(this, sb.toString());
-                }else{  
+                }else{
                     String sql = "insert into Phieunhap values('"+jsp.getText()+"','"+jnlp.getText()+"','"+jct.getText()+"','"
                             +jdc.getText()+"','"+jsdt.getText()+"','"+jmst.getText()+"','"+jmsm.getText()+"','"
                             +jtmt.getText()+"','"+jhsx.getText()+"','"+jsl.getText()+"','"

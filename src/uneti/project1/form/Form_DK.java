@@ -2,10 +2,13 @@
 package uneti.project1.form;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import uneti.project1.main.ConnectDB;
+import uneti.project1.main.Main;
 
 public class Form_DK extends javax.swing.JPanel {
     
@@ -27,15 +30,15 @@ public class Form_DK extends javax.swing.JPanel {
         labelBorder1 = new uneti.project1.swing.LabelBorder();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         labelBorder6 = new uneti.project1.swing.LabelBorder();
-        btndmk1 = new javax.swing.JButton();
+        btndmk = new javax.swing.JButton();
         jmnv1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jmkdk1 = new javax.swing.JPasswordField();
-        jcmkdk1 = new javax.swing.JPasswordField();
+        jmk1 = new javax.swing.JPasswordField();
+        jcmk1 = new javax.swing.JPasswordField();
         labelBorder5 = new uneti.project1.swing.LabelBorder();
-        btndmk = new javax.swing.JButton();
+        btndk = new javax.swing.JButton();
         jmnv2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -51,13 +54,13 @@ public class Form_DK extends javax.swing.JPanel {
 
         labelBorder6.setBackground(new java.awt.Color(255, 255, 255));
 
-        btndmk1.setBackground(new java.awt.Color(255, 255, 255));
-        btndmk1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btndmk1.setText("Đổi mật khẩu");
-        btndmk1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btndmk1.addActionListener(new java.awt.event.ActionListener() {
+        btndmk.setBackground(new java.awt.Color(255, 255, 255));
+        btndmk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btndmk.setText("Đổi mật khẩu");
+        btndmk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btndmk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndmk1ActionPerformed(evt);
+                btndmkActionPerformed(evt);
             }
         });
 
@@ -79,7 +82,7 @@ public class Form_DK extends javax.swing.JPanel {
                             .addGroup(labelBorder6Layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcmkdk1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jcmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(labelBorder6Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -87,10 +90,10 @@ public class Form_DK extends javax.swing.JPanel {
                             .addGroup(labelBorder6Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jmkdk1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(labelBorder6Layout.createSequentialGroup()
                         .addGap(354, 354, 354)
-                        .addComponent(btndmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btndmk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(301, Short.MAX_VALUE))
         );
         labelBorder6Layout.setVerticalGroup(
@@ -102,28 +105,34 @@ public class Form_DK extends javax.swing.JPanel {
                     .addComponent(jmnv1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(labelBorder6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jmkdk1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(labelBorder6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcmkdk1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(btndmk1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btndmk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(155, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Thay đổi mật khẩu", labelBorder6);
+        jTabbedPane1.addTab("Đăng ký tài khoản", labelBorder6);
 
         labelBorder5.setBackground(new java.awt.Color(255, 255, 255));
 
-        btndmk.setBackground(new java.awt.Color(255, 255, 255));
-        btndmk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btndmk.setText("Đổi mật khẩu");
-        btndmk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btndmk.addActionListener(new java.awt.event.ActionListener() {
+        btndk.setBackground(new java.awt.Color(255, 255, 255));
+        btndk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btndk.setText("Đăng ký");
+        btndk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btndk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndmkActionPerformed(evt);
+                btndkActionPerformed(evt);
+            }
+        });
+
+        jmnv2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnv2ActionPerformed(evt);
             }
         });
 
@@ -144,7 +153,7 @@ public class Form_DK extends javax.swing.JPanel {
                     .addGroup(labelBorder5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(labelBorder5Layout.createSequentialGroup()
                             .addGap(354, 354, 354)
-                            .addComponent(btndmk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btndk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, labelBorder5Layout.createSequentialGroup()
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel13)
@@ -187,7 +196,7 @@ public class Form_DK extends javax.swing.JPanel {
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcnmk2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addComponent(btndmk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btndk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -222,51 +231,64 @@ public class Form_DK extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btndkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndkActionPerformed
+        conn = cn.getConnection();
+        try {
+            st = conn.createStatement();
+            String sql = "update Nhanvien set Password='"+jmk1.getText()+"'where MaNV='"+jmnv1.getText()+"'";
+            if(jnmk2.getText().equals(jcnmk2.getText())){
+                int rs = st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công");
+            }else{
+                JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp!");
+            }
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_btndkActionPerformed
+
     private void btndmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndmkActionPerformed
-        // TODO add your handling code here:
+       conn = cn.getConnection();
+        try {
+            st = conn.createStatement();
+            String sql = "update Nhanvien set Password='"+jmk1.getText()+"'where MaNV='"+jmnv1.getText()+"'";
+            if(jmk1.getText().equals(jcmk1.getText())){
+                int rs = st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(this, "Đăng ký tài khoản thành công");
+            }else{
+                JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp!");
+            }
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_btndmkActionPerformed
 
-    private void btndmk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndmk1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btndmk1ActionPerformed
+    private void jmnv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnv2ActionPerformed
+        
+    }//GEN-LAST:event_jmnv2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btndk;
     private javax.swing.JButton btndmk;
-    private javax.swing.JButton btndmk1;
-    private javax.swing.JButton btndn;
-    private javax.swing.JButton btndn1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPasswordField jcmk;
     private javax.swing.JPasswordField jcmk1;
-    private javax.swing.JPasswordField jcmkdk1;
     private javax.swing.JPasswordField jcnmk2;
-    private javax.swing.JTextField jid;
-    private javax.swing.JTextField jid1;
-    private javax.swing.JPasswordField jmk;
     private javax.swing.JPasswordField jmk1;
     private javax.swing.JPasswordField jmk2;
-    private javax.swing.JPasswordField jmkdk1;
     private javax.swing.JTextField jmnv1;
     private javax.swing.JTextField jmnv2;
     private javax.swing.JPasswordField jnmk2;
     private uneti.project1.swing.LabelBorder labelBorder1;
-    private uneti.project1.swing.LabelBorder labelBorder2;
-    private uneti.project1.swing.LabelBorder labelBorder3;
     private uneti.project1.swing.LabelBorder labelBorder5;
     private uneti.project1.swing.LabelBorder labelBorder6;
     // End of variables declaration//GEN-END:variables
 }
+
